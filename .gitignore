@@ -1,1 +1,7 @@
 *~
+*.so
+cov
+*.pyc
+core
+like
+*.tar.gz
