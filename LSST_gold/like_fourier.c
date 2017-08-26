@@ -453,6 +453,8 @@ double log_multi_like(double OMM, double S8, double NS, double W0,double WA, dou
   }
   if (chisqr<-1.0) exit(EXIT_FAILURE);
 
+  printf("chisqr = %f\n", chisqr);
+
   return -0.5*chisqr+log_L_prior;
 }
 
@@ -570,9 +572,11 @@ void update_Ntable_Na(int N_a){
   init_clusters();
   init_IA("none", "DEEP2");
   init_priors("Planck_BAO_SN_Aubourg","none","none","none");
-  init_probes("pos_pos");
+  //init_probes("pos_pos");
   //init_probes("shear_shear");
   //init_probes("all_2pt");
+  init_probes("ggl_cl");
+
   update_nuisance_LSST_source();
 
   printf("survey.ggl_overlap_cut:  %f\n", survey.ggl_overlap_cut);
