@@ -31,4 +31,4 @@ sample_params = sample_cosmology_ggl_clustering_nuisance(get_N_tomo_shear(),get_
 #sample_params = sample_cosmology_2pt_nuisance(get_N_tomo_shear(),get_N_tomo_clustering())
 #sample_params = sample_cosmology_2pt_nuisance_IA_marg(get_N_tomo_shear(),get_N_tomo_clustering())
 #sample_params = sample_cosmology_2pt_cluster_nuisance(get_N_tomo_shear(),get_N_tomo_clustering()) 
-sample_main(sample_params,4000,120,24,chain_file, blind=False)
+sample_main(sample_params,8000,128,32,chain_file, blind=False)
