@@ -501,8 +501,8 @@ def sample_main(varied_parameters, iterations, nwalker, nthreads, filename, blin
     print starting_point
 
     std = InputCosmologyParams.fiducial_sigma().convert_to_vector_filter(varied_parameters)
-    #std += InputNuisanceParams().fiducial_sigma().convert_to_vector_filter(varied_parameters)
-    std = np.zeros(len(starting_point))
+    std += InputNuisanceParams().fiducial_sigma().convert_to_vector_filter(varied_parameters)
+    #std = np.zeros(len(starting_point))
 
     p0 = emcee.utils.sample_ball(starting_point, std, size=nwalker)
 
