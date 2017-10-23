@@ -402,6 +402,16 @@ def sample_cosmology_pos_pos_nuisance_specz(tomo_N_lens,MG = False):
     varied_parameters += ['bias_%d'%i for i in xrange(tomo_N_lens)]
     return varied_parameters
 
+def sample_cosmology_ggl_nuisance(tomo_N_shear,tomo_N_lens,MG = False):
+    varied_parameters = sample_cosmology_only(MG)
+    varied_parameters += ['bias_%d'%i for i in xrange(tomo_N_lens)]
+    varied_parameters += ['source_z_bias_%d'%i for i in xrange(tomo_N_shear)]
+    varied_parameters.append('source_z_s')
+    varied_parameters += ['lens_z_bias_%d'%i for i in xrange(tomo_N_lens)]
+    varied_parameters.append('lens_z_s')
+    varied_parameters += ['shear_m_%d'%i for i in xrange(tomo_N_shear)]
+    return varied_parameters
+
 def sample_cosmology_ggl_clustering_nuisance(tomo_N_shear,tomo_N_lens,MG = False):
     varied_parameters = sample_cosmology_only(MG)
     varied_parameters += ['bias_%d'%i for i in xrange(tomo_N_lens)]
@@ -491,8 +501,8 @@ def sample_main(varied_parameters, iterations, nwalker, nthreads, filename, blin
     print starting_point
 
     std = InputCosmologyParams.fiducial_sigma().convert_to_vector_filter(varied_parameters)
-    std += InputNuisanceParams().fiducial_sigma().convert_to_vector_filter(varied_parameters)
-    #std = np.zeros(len(starting_point))
+    #std += InputNuisanceParams().fiducial_sigma().convert_to_vector_filter(varied_parameters)
+    std = np.zeros(len(starting_point))
 
     p0 = emcee.utils.sample_ball(starting_point, std, size=nwalker)
 

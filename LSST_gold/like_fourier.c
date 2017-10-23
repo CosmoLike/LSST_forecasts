@@ -575,7 +575,8 @@ void update_Ntable_Na(int N_a){
   //init_probes("pos_pos");
   //init_probes("shear_shear");
   //init_probes("all_2pt");
-  init_probes("ggl_cl");
+  //init_probes("ggl_cl");
+  init_probes("ggl");
 
   update_nuisance_LSST_source();
 
